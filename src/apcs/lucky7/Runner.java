@@ -41,12 +41,15 @@ public class Runner {
 				++round;
 				System.out.println("");
 				double x = Math.random();
-				x = (int) (((x * dice) * 2) + 2);
+				double y = Math.random();
+				x = (int)((x * dice) + 1);
+				y = (int)((y * dice) + 1);
+				int z = (int)(x + y);
 				System.out.println("Dice Roll: " + round);
-				System.out.println("Result: " + x);
+				System.out.println("Dice values: " + y + " & " + x + " Result: " + z);
 				wall = wall - payin;
-				if (x == luck) {
-					wall = wall + (int) (payin * 4);
+				if (z == luck) {
+					wall = wall + (int) (payin * 5);
 				}
 				if (wall > max) {
 					max = wall;
