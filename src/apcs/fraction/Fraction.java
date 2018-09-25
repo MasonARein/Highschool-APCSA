@@ -1,32 +1,41 @@
 package apcs.fraction;
 
 public class Fraction {
-	private int num;
-	private int deno;
+	private int numerator;
+	private int denominator;
 	public Fraction (int n, int d) {
-	     num = n;
-	     deno = d;
+	     numerator = n;
+	     denominator = d;
 	}
 
 	public int getNum() {
-		return num;
+		return numerator;
 	}
 
 	public void setNum(int num) {
-		this.num = num;
+		this.numerator = num;
 	}
 
 	public int getDeno() {
-		return deno;
+		return denominator;
 	}
 
 	public void setDeno(int deno) {
-		this.deno = deno;
+		this.denominator = deno;
 	}
 
+	@Override
 	public String toString () {
 		String str;
-		str = num + " / " + deno;
+		str = numerator + " / " + denominator;
 		return str;
+	}
+	Fraction add (Fraction other) {
+		int y = this.numerator *other.denominator;
+		int x = this.denominator * other.numerator;
+		int z = x + y;
+		other = z /(this.denominator * other.denominator);
+		return other;
+		
 	}
 }
