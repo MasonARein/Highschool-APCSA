@@ -1,5 +1,7 @@
 package apcs.fraction;
 
+import java.util.Scanner;
+
 public class FractionRunner {
 
 	public static void main(String[] args) {
@@ -42,6 +44,53 @@ public class FractionRunner {
 		f2 = new Fraction (2, 4);
 		System.out.println (f1 + "==" + f2 + " = " + f1.equals (f2));
 		System.out.println (f2 + "==" + f1 + " = " + f2.equals (f1));
+		
+		System.out.println ("Enter Numerator Value");
+		Scanner reader = new Scanner (System.in);
+		int numval = reader.nextInt ();
+		System.out.println ("Enter Denominator Value");
+		Scanner reader1 = new Scanner (System.in);
+		int denoval = reader1.nextInt ();
+		System.out.println ("Enter operation(add, sub, mult, div)");
+		Scanner reader2 = new Scanner (System.in);
+		String operation = reader2.next ();
+		if(operation != "add") {
+			if(operation != "sub") {
+				if(operation != "mult") {
+					if(operation != "div") {
+						System.out.println ("Enter operation(add, sub, mult, div)");
+						reader2 = new Scanner (System.in);
+						operation = reader2.next ();
+					}
+				}
+			}
+		}
+		System.out.println ("Enter Numerator Value");
+		Scanner reader3 = new Scanner (System.in);
+		int numval2 = reader3.nextInt ();
+		System.out.println ("Enter Denominator Value");
+		Scanner reader4 = new Scanner (System.in);
+		int denoval2 = reader4.nextInt ();
+		
+
+		f1.setNumerator (numval);                  
+		f1.setDenominator (denoval); 
+		f2 = new Fraction (numval2, denoval2);
+		Fraction total = f2;
+		
+		if(operation == "add") {
+			total = f1.add(f2);
+		}
+		if(operation == "sub") {
+			total = f1.subtract(f2);
+		}
+		if(operation == "mult") {
+			total = f1.multiply(f2);
+		}
+		if(operation == "div") {
+			total = f1.divide(f2);
+		}
+		System.out.println ("The anwser is: " + total);
 
 	}
 
