@@ -101,7 +101,7 @@ public class Fraction {
 	Fraction multiply (Fraction input) {
 		int topa = this.numerator *input.numerator;
 		int topb = this.denominator * input.denominator;
-		Fraction total = new Fraction (topa, topb);  
+		Fraction total = new Fraction (topa, topb);
 		return total;
 		
 	}
