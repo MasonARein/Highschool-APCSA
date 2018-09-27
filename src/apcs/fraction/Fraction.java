@@ -132,5 +132,17 @@ public class Fraction {
 		}
 		return false;
 	}
+	private void simplify () {
+		int n = numerator;
+		int d = denominator;
+		while(n != d) {
+        if (n > d) {
+           n = n - d; 
+        }
+        else {
+           d = d - n; 
+        }
+		}
+	}
 
 }

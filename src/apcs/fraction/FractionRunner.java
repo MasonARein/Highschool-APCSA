@@ -57,7 +57,7 @@ public class FractionRunner {
 		if(operation.equals("add") == false) {
 			if(operation.equals("sub") == false) {
 				if(operation.equals("mult") == false) {
-					if(operation.equals("div")) {
+					if(operation.equals("div") == false) {
 						System.out.println ("Enter operation(add, sub, mult, div)");
 						reader2 = new Scanner (System.in);
 						operation = reader2.next ();
@@ -81,13 +81,13 @@ public class FractionRunner {
 		if(operation.equals("add")) {
 			total = f1.add(f2);
 		}
-		if(operation.equals("sub")) {
+		else if(operation.equals("sub")) {
 			total = f1.subtract(f2);
 		}
-		if(operation.equals("mult")) {
+		else if(operation.equals("mult")) {
 			total = f1.multiply(f2);
 		}
-		if(operation.equals("div")) {
+		else if(operation.equals("div")) {
 			total = f1.divide(f2);
 		}
 		System.out.println ("The anwser is: " + total);
