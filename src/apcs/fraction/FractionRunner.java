@@ -54,10 +54,10 @@ public class FractionRunner {
 		System.out.println ("Enter operation(add, sub, mult, div)");
 		Scanner reader2 = new Scanner (System.in);
 		String operation = reader2.next ();
-		if(operation != "add") {
-			if(operation != "sub") {
-				if(operation != "mult") {
-					if(operation != "div") {
+		if(operation.equals("add") == false) {
+			if(operation.equals("sub") == false) {
+				if(operation.equals("mult") == false) {
+					if(operation.equals("div")) {
 						System.out.println ("Enter operation(add, sub, mult, div)");
 						reader2 = new Scanner (System.in);
 						operation = reader2.next ();
@@ -78,16 +78,16 @@ public class FractionRunner {
 		f2 = new Fraction (numval2, denoval2);
 		Fraction total = f2;
 		
-		if(operation == "add") {
+		if(operation.equals("add")) {
 			total = f1.add(f2);
 		}
-		if(operation == "sub") {
+		if(operation.equals("sub")) {
 			total = f1.subtract(f2);
 		}
-		if(operation == "mult") {
+		if(operation.equals("mult")) {
 			total = f1.multiply(f2);
 		}
-		if(operation == "div") {
+		if(operation.equals("div")) {
 			total = f1.divide(f2);
 		}
 		System.out.println ("The anwser is: " + total);
