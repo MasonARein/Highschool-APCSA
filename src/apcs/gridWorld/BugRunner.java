@@ -16,6 +16,8 @@ public class BugRunner {
 		MyActor tim = new MyActor ();
 		world.add (tim);
 		world.add(new LeftyBug());
+		world.add(new BoxBug(5));
+		world.add(new CircleBug(5));
 		Bug buggy = new Bug();
 		world.add(buggy);
 		Rock rocky = new Rock();
