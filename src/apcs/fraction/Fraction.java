@@ -7,6 +7,7 @@ package apcs.fraction;
  *
  */
 public class Fraction {
+	private int whole;
 	private int numerator;
 	private int denominator;
 	/**
@@ -14,11 +15,27 @@ public class Fraction {
 	 * @param n is the value equal to the numerator 
 	 * @param d is the value equal to the denominator 
 	 */
-	public Fraction (int n, int d) {
-	     numerator = n;
+	public Fraction (int w, int n, int d) {
+	     whole = w;
+		 numerator = n;
 	     denominator = d;
-	}
 
+	}
+	
+	/**
+	 * gets the value of the whole
+	 * @return whole number of fraction
+	 */
+	public int getWhole() {
+		return whole;
+	}
+	/**
+	 * sets the value of the whole
+	 * @param who sets the value of the whole
+	 */
+	public void setWhole(int who) {
+		this.numerator = who;
+	}
 	/**
 	 * gets the value of the numerator
 	 * @return the numerator
@@ -59,7 +76,7 @@ public class Fraction {
 	@Override
 	public String toString () {
 		String str;
-		str = numerator + "/" + denominator;
+		str = whole + " " + numerator + "/" + denominator;
 		return str;
 	}
 	/**
@@ -70,10 +87,16 @@ public class Fraction {
 	 * 
 	 */
 	Fraction add (Fraction input) {
+		int num = this.whole + input.whole;
 		int topa = this.numerator *input.denominator;
 		int topb = this.denominator * input.numerator;
 		int top = topa + topb;
-		Fraction total = new Fraction (top, (this.denominator * input.denominator));  
+		int bottom = this.denominator * input.denominator;
+		if(top >= bottom) {
+			num = top/bottom + num;
+			top = top%bottom;
+		}
+		Fraction total = new Fraction (num, top,bottom );  
 		return total;
 		
 	}
@@ -84,10 +107,16 @@ public class Fraction {
 	 * 
 	 */
 	Fraction subtract (Fraction input) {
+		int num = this.whole + input.whole;
 		int topa = this.numerator *input.denominator;
 		int topb = this.denominator * input.numerator;
 		int top = topa - topb;
-		Fraction total = new Fraction (top, (this.denominator * input.denominator));  
+		int bottom = this.denominator * input.denominator;
+		if(top >= bottom) {
+			num = (top/bottom) + num;
+			top = top%bottom;
+		}
+		Fraction total = new Fraction (num, top, bottom); 
 		return total;
 		
 	}
@@ -99,9 +128,14 @@ public class Fraction {
 	 * 
 	 */
 	Fraction multiply (Fraction input) {
+		int num = this.whole + input.whole;
 		int topa = this.numerator *input.numerator;
 		int topb = this.denominator * input.denominator;
-		Fraction total = new Fraction (topa, topb);
+		if(topa >= topb) {
+			num = topa/topb + num;
+			topa = topa%topb;
+		}
+		Fraction total = new Fraction (num, topa, topb);
 		return total;
 		
 	}
@@ -113,9 +147,14 @@ public class Fraction {
 	 * 
 	 */
 	Fraction divide (Fraction input) {
+		int num = this.whole + input.whole;
 		int topa = this.numerator *input.denominator;
 		int topb = this.denominator * input.numerator;
-		Fraction total = new Fraction (topa, topb);  
+		if(topa >= topb) {
+			num = topa/topb + num;
+			topa = topa%topb;
+		}
+		Fraction total = new Fraction (num, topa, topb);  
 		return total;
 		
 	}
@@ -125,24 +164,15 @@ public class Fraction {
 	 * @return true or false on if fraction is equal to other fraction
 	 */
 	public boolean equals (Fraction input) {
+		int wholeone = this.whole;
+		int wholetwo = input.whole;
 		int crossone = (int)this.numerator * input.denominator;
 		int crosstwo = (int)this.denominator * input.numerator;
-		if(crossone == crosstwo) {
+		if(crossone == crosstwo &&  wholeone == wholetwo) {
 			return true;
 		}
 		return false;
 	}
-	private void simplify () {
-		int n = numerator;
-		int d = denominator;
-		while(n != d) {
-        if (n > d) {
-           n = n - d; 
-        }
-        else {
-           d = d - n; 
-        }
-		}
-	}
+
 
 }
