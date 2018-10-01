@@ -9,6 +9,8 @@ public class BugRunner {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ActorWorld world = new ActorWorld();
+		MyActor tim = new MyActor ();
+		world.add (tim);
 		Bug buggy = new Bug();
 		world.add(buggy);
 		Rock rocky = new Rock();
