@@ -8,18 +8,35 @@ public class GuessRunner {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Value rand = new Value();
-		int in;
-		int input;
+		boolean sucsess = false;
+		int in = 0;
+		int input = 0;
 		Scanner reader = new Scanner(System.in);
 		System.out.println("What number am I thinking of?");
 		in = reader.nextInt();
 		Value guess = new Value (in);
+		do{
 		try {
-			
+			System.out.println("What number am I thinking of?");
+			in = reader.nextInt();
+			Value guess1 = new Value (in);
+			input += 1;
+			if (rand.less(guess)) {
+				System.out.println("Your guess is lower");
+			}
+			else if (rand.more(guess)) {
+				System.out.println("Your guess is higher");
+			}
 		}
 		catch(Exception e) {
-			
+			reader.nextLine();
+			System.out.println("Error: " + e);
 		}
+		}
+		while (sucsess = (false));
+		System.out.println("YOU WIN!");
+		System.out.println("Number of Guesses: " + input);
+
 	}
 
 }

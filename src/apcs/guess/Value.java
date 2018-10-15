@@ -4,7 +4,7 @@ public class Value {
 	private int value;
 	
 	public Value(){
-		value = (int)(Math.random() * 100);
+		value = (int)(Math.random() * 101);
 		
 	}
 	public Value(int value){
@@ -23,5 +23,11 @@ public class Value {
 	}
 	boolean equals(Value instance) {
 		return this.value == instance.value;
+	}
+	public boolean less(Value instance) {
+		return this.value > instance.value;
+	}
+	public boolean more(Value instance) {
+		return this.value < instance.value;
 	}
 }
