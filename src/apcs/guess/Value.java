@@ -70,4 +70,9 @@ public class Value {
 	public boolean more(Value instance) {
 		return this.value > instance.value;
 	}
+	public int compareTo (Value instance) {
+		int delta = this.value - instance.value;
+		
+		return delta;
+	}
 }
