@@ -12,20 +12,22 @@ public class GuessRunner {
 		int in = 0;
 		int input = 0;
 		Scanner reader = new Scanner(System.in);
-		System.out.println("What number am I thinking of?");
-		in = reader.nextInt();
-		Value guess = new Value (in);
-		do{
+		while (sucsess == (false)) {
 		try {
 			System.out.println("What number am I thinking of?");
 			in = reader.nextInt();
-			Value guess1 = new Value (in);
+			Value guess = new Value (in);
 			input += 1;
 			if (rand.less(guess)) {
-				System.out.println("Your guess is lower");
+				System.out.println("Your guess is higher");
 			}
 			else if (rand.more(guess)) {
-				System.out.println("Your guess is higher");
+				System.out.println("Your guess is lower");
+			}
+			else if(rand.equals(guess)) {
+				System.out.println("YOU WIN!");
+				System.out.println("Number of Guesses: " + input);
+				sucsess = true;
 			}
 		}
 		catch(Exception e) {
@@ -33,9 +35,6 @@ public class GuessRunner {
 			System.out.println("Error: " + e);
 		}
 		}
-		while (sucsess = (false));
-		System.out.println("YOU WIN!");
-		System.out.println("Number of Guesses: " + input);
 
 	}
 

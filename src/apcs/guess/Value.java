@@ -21,13 +21,13 @@ public class Value {
 		str = "" + value;
 		return str;
 	}
-	boolean equals(Value instance) {
+	public boolean equals(Value instance) {
 		return this.value == instance.value;
 	}
 	public boolean less(Value instance) {
-		return this.value > instance.value;
+		return this.value < instance.value;
 	}
 	public boolean more(Value instance) {
-		return this.value < instance.value;
+		return this.value > instance.value;
 	}
 }
