@@ -16,6 +16,7 @@ public class Exersises {
 		world.add(new SpiralBug(5));
 		world.add(new ZBug(5));
 		world.add(new DancingBug());
+		world.add(new ZigZagBug(4));
 		Bug buggy = new Bug();
 		world.show();
 	}
