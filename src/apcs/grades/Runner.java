@@ -12,7 +12,7 @@ public class Runner {
 		int intake = reader.nextInt();
 		double [] grade = new double[intake];
 		for(int r =0; r < intake; r++) {
-			System.out.println ("Enter a Grade as a Boolean");
+			System.out.println ("Enter a Grade as a double(78.0)");
 			grade[r]=reader.nextDouble();
 		}
 		Arrays.sort(grade);
