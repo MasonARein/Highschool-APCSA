@@ -8,12 +8,23 @@ public class Runner {
 
 	public static void main(String[] args) {
 		Scanner reader = new Scanner(System.in);
+		boolean repeat = true;
+		while(repeat == true) {
+		try {
 		System.out.println("How many test grades are there?");
 		int intake = reader.nextInt();
 		double [] grade = new double[intake];
 		for(int r =0; r < intake; r++) {
-			System.out.println ("Enter a Grade as a Boolean");
-			grade[r]=reader.nextDouble();
+			double bet = 0;
+			System.out.println ("Enter a Grade as a Double");
+			bet=reader.nextDouble();
+			if(bet >= 0.0 && bet <= 100.0) {
+			grade[r] = bet;
+			}
+			else {
+				System.out.println ("Between 0-100 Please");
+				r--;
+			}
 		}
 		Arrays.sort(grade);
 		System.out.println (Arrays.toString (grade));
@@ -21,6 +32,16 @@ public class Runner {
 		System.out.println ("The minimum score is: " + min(grade));
 		System.out.println ("The mean is: " + mean(grade));
 		System.out.println ("The median is: " + median(grade));
+		System.out.println ("");
+		
+		}
+		catch (Exception e) {
+			reader.nextLine();
+			System.out.println("Error: " + e);
+		}
+		System.out.println ("More Grades? (true or false)");
+		repeat = reader.nextBoolean();
+		}
 	}
 	public static double min (double[] arr) {
 		double small = 100.0;
