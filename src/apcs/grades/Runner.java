@@ -25,6 +25,8 @@ public class Runner {
 				System.out.println ("Between 0-100 Please");
 				r--;
 			}
+			System.out.println ("Enter a Grade as a double(78.0)");
+			grade[r]=reader.nextDouble();
 		}
 		Arrays.sort(grade);
 		System.out.println (Arrays.toString (grade));
