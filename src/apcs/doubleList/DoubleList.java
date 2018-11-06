@@ -47,12 +47,19 @@ public class DoubleList {
 	public int maxSize() {
 		return myList.length;
 	}
-	private expand() {
-		DoubleList newList = new DoubleList ((int)(size()*1.5));
-		for(int i = 0;i < size()*1.5;i++) {
-			newList.myList[i] = this.myList[i];
+
+	/**
+	 * Creates a new list of 1.5 size of the current list and assigns all the values
+	 * of the items in the previous list into the new list. It then sets the address
+	 * of the new list to the old one
+	 */
+	private void expand() {
+		double[] newList = new double[((int) (size() * 1.5))];
+		for (int i = 0; i < size(); i++) {
+			newList[i] = this.myList[i];
 		}
-		
+		myList = newList;
+
 	}
 
 	/**
@@ -64,7 +71,7 @@ public class DoubleList {
 	 */
 	public void add(double newt) {
 		if (size() == maxSize()) {
-			throw new IndexOutOfBoundsException("The DoubleList is full.");
+			expand();
 		} else {
 			myList[mySize] = newt;
 			mySize++;
@@ -75,12 +82,14 @@ public class DoubleList {
 	/**
 	 * removes the last item added to the list
 	 */
-	public void remove() {
+	public double remove() {
 		if (mySize == 0) {
 			throw new IndexOutOfBoundsException("The DoubleList is empty.");
 		}
 		mySize--;
+		double removedItem = myList[mySize];
 		myList[mySize] = 0.0;
+		return removedItem;
 
 	}
 
@@ -145,7 +154,7 @@ public class DoubleList {
 				total = total + myList[i];
 			}
 		} else {
-			total = 0;
+			total = 0.0;
 		}
 		return total;
 	}
@@ -164,7 +173,7 @@ public class DoubleList {
 		else {
 			throw new IndexOutOfBoundsException("The DoubleList is empty.");
 		}
-		total = total / myList.length;
+		total = total / mySize;
 		return total;
 	}
 
@@ -196,7 +205,7 @@ public class DoubleList {
 		double min = myList[0];
 		if (size() != 0)
 			for (int i = 0; i < size(); i++) {
-				if (myList[i] > min) {
+				if (myList[i] < min) {
 					min = myList[i];
 				}
 			}
@@ -213,7 +222,7 @@ public class DoubleList {
 	 * @return the item in the requested place of the list
 	 */
 	public double get(int item) {
-		if (item > 0 && item < size()) {
+		if (item >= 0 && item < size()) {
 			double value = myList[item];
 			return value;
 		} else {
@@ -228,7 +237,7 @@ public class DoubleList {
 	 * @param value value the place is going to be set to
 	 */
 	public void set(int item, double value) {
-		if (item > 0 && item < size()) {
+		if (item >= 0 && item < size()) {
 			myList[item] = value;
 		} else {
 			throw new IndexOutOfBoundsException("Place not found in List");
@@ -246,7 +255,7 @@ public class DoubleList {
 	public void add(int index, double value) {
 		if (size() == maxSize()) {
 			expand();
-			
+
 		} else {
 			if (index > size()) {
 				throw new IndexOutOfBoundsException("Value outside of list size");
@@ -289,12 +298,18 @@ public class DoubleList {
 			myList[i] = 0.0;
 		}
 	}
+
 	/**
-	 * Compares two different double lists on the different values they have and returns true if all values are the same
+	 * Compares two different double lists on the different values they have and
+	 * returns true if all values are the same
+	 * 
 	 * @param exe The double list that is being compared to the current double list
 	 * @return true if all of the values in the two lists are the same
 	 */
-	public boolean equals(DoubleList[] exe) {
+	public boolean equals(DoubleList exe) {
+		if(this.mySize != exe.mySize) {
+			return false;
+		}
 		for (int i = 0; i < this.mySize; i++) {
 			if (this.myList[i] != exe.myList[i]) {
 				return false;
@@ -315,9 +330,8 @@ public class DoubleList {
 			return false;
 		}
 	}
-	
 
-	private DoubleList(double[] val) {
+	public DoubleList(double[] val) {
 		mySize = 0;
 		myList = new double[(int) (val.length * 1.5)];
 		for (double valval : val) {
