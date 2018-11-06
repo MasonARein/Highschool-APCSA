@@ -47,6 +47,13 @@ public class DoubleList {
 	public int maxSize() {
 		return myList.length;
 	}
+	private expand() {
+		DoubleList newList = new DoubleList ((int)(size()*1.5));
+		for(int i = 0;i < size()*1.5;i++) {
+			newList.myList[i] = this.myList[i];
+		}
+		
+	}
 
 	/**
 	 * Adds an item to the end of the DoubleList Precondition: the list is not full
@@ -72,7 +79,7 @@ public class DoubleList {
 		if (mySize == 0) {
 			throw new IndexOutOfBoundsException("The DoubleList is empty.");
 		}
-		--mySize;
+		mySize--;
 		myList[mySize] = 0.0;
 
 	}
@@ -227,67 +234,90 @@ public class DoubleList {
 			throw new IndexOutOfBoundsException("Place not found in List");
 		}
 	}
+
 	/**
-	 * Takes in a place and a value and sets that value to the place and moves down all other values one place. Throws exception if the list is max size or requested value is outside list
+	 * Takes in a place and a value and sets that value to the place and moves down
+	 * all other values one place. Throws exception if the list is max size or
+	 * requested value is outside list
+	 * 
 	 * @param index [lace requested to be switched
 	 * @param value value being put into requested position
 	 */
 	public void add(int index, double value) {
-		if(size() == maxSize()) {
-			throw new IndexOutOfBoundsException("Double list is full");
-		}
-		else {
-			if(index > size()) {
+		if (size() == maxSize()) {
+			expand();
+			
+		} else {
+			if (index > size()) {
 				throw new IndexOutOfBoundsException("Value outside of list size");
-			}
-			else {
-				for(int i = (myList.length - index); i >= index; i--) {
+			} else {
+				for (int i = mySize; i >= index; i--) {
 					myList[i + 1] = myList[i];
-					
+
 				}
 				myList[index] = value;
-				mySize ++;
-					
-				
+				mySize++;
+
 			}
 		}
 	}
+
+	/**
+	 * Removes a value in the list and moves down all other values by one spot
+	 * 
+	 * @param index The place that is to be removed from the list
+	 */
 	public void remove(int index) {
-		if(index > size()) {
+		if (index > size()) {
 			throw new IndexOutOfBoundsException("Value outside of list size");
-		}
-		else {
-			
+		} else {
+			for (int i = mySize; i >= index; i--) {
+				myList[i - 1] = myList[i];
+
+			}
+			mySize--;
 		}
 	}
+
 	/**
-	 * The size of the list to zero and clears all previous items to the value of zero
+	 * The size of the list to zero and clears all previous items to the value of
+	 * zero
 	 */
 	public void clear() {
 		mySize = 0;
-		for(int i = 0; i > myList.length;i++) {
+		for (int i = 0; i < myList.length; i++) {
 			myList[i] = 0.0;
 		}
 	}
 	/**
+	 * Compares two different double lists on the different values they have and returns true if all values are the same
+	 * @param exe The double list that is being compared to the current double list
+	 * @return true if all of the values in the two lists are the same
+	 */
+	public boolean equals(DoubleList[] exe) {
+		for (int i = 0; i < this.mySize; i++) {
+			if (this.myList[i] != exe.myList[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
 	 * Returns true or false on if the list is empty or not
+	 * 
 	 * @return true or false for if the list is empty or not
 	 */
 	public boolean isEmpty() {
-		if(mySize == 0) {
+		if (mySize == 0) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
-	/**
-	 * Makes a list that is identical to the list given that can be used to augment
-	 * a list and keep the original
-	 * 
-	 * @param val is the list going to be copied
-	 */
-	public DoubleList(double[] val) {
+	
+
+	private DoubleList(double[] val) {
 		mySize = 0;
 		myList = new double[(int) (val.length * 1.5)];
 		for (double valval : val) {
