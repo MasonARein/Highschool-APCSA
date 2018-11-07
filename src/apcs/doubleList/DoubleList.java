@@ -307,7 +307,7 @@ public class DoubleList {
 	 * @return true if all of the values in the two lists are the same
 	 */
 	public boolean equals(DoubleList exe) {
-		if(this.mySize != exe.mySize) {
+		if (this.mySize != exe.mySize) {
 			return false;
 		}
 		for (int i = 0; i < this.mySize; i++) {
@@ -331,13 +331,49 @@ public class DoubleList {
 		}
 	}
 
+	/**
+	 * Takes in a array of doubles and turns them into a list that can be modified
+	 * by the class
+	 * 
+	 * @param val the array that is being taken in to be converted into a list
+	 */
 	public DoubleList(double[] val) {
-		mySize = 0;
+		mySize = (int) (val.length * 1.5);
 		myList = new double[(int) (val.length * 1.5)];
 		for (double valval : val) {
 			this.add(valval);
 		}
 
+	}
+
+	/**
+	 * Creates a clone of the list that is being input into the program at a
+	 * different address
+	 * 
+	 * @param clone the list that is going to be cloned
+	 * @return the clone of the list that was input
+	 */
+	public DoubleList clone(DoubleList clone) {
+		DoubleList copy = null;
+		copy.mySize = clone.mySize;
+		for (int i = 0; i < clone.mySize; i++) {
+			copy.myList[i] = clone.myList[i];
+		}
+		return copy;
+	}
+
+	/**
+	 * Creates an array that contains the same information as the list only it
+	 * cannot be changed and acts as an array
+	 * 
+	 * @return the array that is a copy of the list
+	 */
+	public double[] toArray() {
+		double[] mirror = new double[this.mySize];
+		for (int i = 0; i < this.mySize; i++) {
+			mirror[i] = this.myList[i];
+		}
+		return mirror;
 	}
 
 	/**
