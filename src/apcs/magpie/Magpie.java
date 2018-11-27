@@ -51,7 +51,7 @@ public class Magpie {
 			}
 		}
 		else if(statement.indexOf("im ") != -1 || statement.indexOf("i'm ") != -1 || statement.indexOf("i am ") != -1 ) {
-			response = "Hi " + statement.substring(statement.indexOf("m") + 2) + " , I'm dad.";
+			response = "Hi " + statement.substring(statement.indexOf("m") + 2) + ", I'm dad.";
 		}
 		
 		else {
@@ -67,13 +67,17 @@ public class Magpie {
 	 * @return a non-committal string
 	 */
 	private String getRandomResponse() {
-		int type = (int) (Math.random() * 5);
-		String[] resp = new String[5];
+		int type = (int) (Math.random() * 9);
+		String[] resp = new String[9];
 		resp[0] = "That's cool, how's life?";
 		resp[1] = "Nice, how was your day?";
 		resp[2] = "What is up with that?";
 		resp[3] = "Good weather we are having, isn't it?";
 		resp[4] = "So how's it going?";
+		resp[5] = "Cool, I don't care";
+		resp[6] = "That sounds like so much fun";
+		resp[7] = "Whats your name?";
+		resp[8] = "Interesting, tell me more";
 
 		String response = resp[type];
 
