@@ -66,7 +66,7 @@ public class DoubleList {
 	 * Adds an item to the end of the DoubleList Precondition: the list is not full
 	 * Postcondition: item is added to the end of the list
 	 * 
-	 * @param item the value to be added
+	 * @param newt the value to be added
 	 * @throws RuntimeException if list is full
 	 */
 	public void add(double newt) {
@@ -81,6 +81,7 @@ public class DoubleList {
 
 	/**
 	 * removes the last item added to the list
+	 * @return the removed item
 	 */
 	public double remove() {
 		if (mySize == 0) {
@@ -256,11 +257,12 @@ public class DoubleList {
 		if (size() == maxSize()) {
 			expand();
 
-		} else {
-			if (index > size()) {
+		} 
+		else {
+			if (index > size() - 1 || index < 0) {
 				throw new IndexOutOfBoundsException("Value outside of list size");
 			} else {
-				for (int i = mySize; i >= index; i--) {
+				for (int i = mySize-1; i >= index; i--) {
 					myList[i + 1] = myList[i];
 
 				}
@@ -277,11 +279,12 @@ public class DoubleList {
 	 * @param index The place that is to be removed from the list
 	 */
 	public void remove(int index) {
-		if (index > size()) {
+		if (index > size() || index < 0) {
 			throw new IndexOutOfBoundsException("Value outside of list size");
-		} else {
-			for (int i = mySize; i >= index; i--) {
-				myList[i - 1] = myList[i];
+		} 
+		else {
+			for (int i = index; i <= size(); i++) {
+				myList[i] = myList[i+1];
 
 			}
 			mySize--;
@@ -338,7 +341,7 @@ public class DoubleList {
 	 * @param val the array that is being taken in to be converted into a list
 	 */
 	public DoubleList(double[] val) {
-		mySize = (int) (val.length * 1.5);
+		mySize = 0;
 		myList = new double[(int) (val.length * 1.5)];
 		for (double valval : val) {
 			this.add(valval);

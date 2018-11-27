@@ -140,15 +140,15 @@ public class MrHRunner {
 		System.out.println ("Attempt to get mean, min, and max of an empty list:");
 		System.out.print ("Mean (Error): ");
 		try {System.out.println(aList.mean());}
-		catch (Exception e) {System.out.println (e);}
+		catch (Exception e) {e.printStackTrace();}
 		
 		System.out.print ("Min (Error): ");
 		try {System.out.println(aList.minimum());}
-		catch (Exception e) {System.out.println (e);}
+		catch (Exception e) {e.printStackTrace();}
 		
 		System.out.print ("Max (Error): ");
 		try {System.out.println(aList.maximum());}
-		catch (Exception e) {System.out.println (e);}
+		catch (Exception e) {e.printStackTrace();}
 
 		System.out.println ("Attempt to get sum, mean, min, and max of a valid list:");
 		try {
@@ -159,7 +159,7 @@ public class MrHRunner {
 			System.out.println ("Min (1.0): " + aList.minimum());
 			System.out.println ("Max (3.0): " + aList.maximum());
 		}
-		catch (Exception e) {System.out.println (e);
+		catch (Exception e) {e.printStackTrace();
 		}
 		// test get/set
 		
@@ -168,18 +168,18 @@ public class MrHRunner {
 			aList = new DoubleList (new double[] {1.0, 2.0, 3.0});
 			System.out.println ("List is: " + aList);
 		}
-		catch (Exception e) {System.out.println (e);}
+		catch (Exception e) {e.printStackTrace();}
 		
 		for (int i=-1; i<4; i++) {
 			System.out.print ("Getting item " + i + ": ");
 			try {System.out.println(aList.get(i));} 
-			catch (Exception e) {System.out.println (e);}
+			catch (Exception e) {e.printStackTrace();}
 			try {
 				System.out.print ("Setting item " + i + " to " + (3.0 - i) + ": ");
 				aList.set(i, 3.0-i);
 				System.out.println(aList);
 			} 
-			catch (Exception e) {System.out.println (e);}
+			catch (Exception e) {e.printStackTrace();}
 		}
 		// test indexed add/remove
 		
@@ -188,45 +188,45 @@ public class MrHRunner {
 			aList = new DoubleList (new double[] {5.0, 6.0, 7.0});
 			System.out.println ("List ([0]=>5.0; [1]=>6.0; [2]=>7.0;): " + aList);
 		}
-		catch (Exception e) {System.out.println (e);}
+		catch (Exception e) {e.printStackTrace();}
 		System.out.println ("Adding to negative index (error):");
 		try {aList.add(-1, 4.0);} 
-		catch (Exception e) {System.out.println (e);}
+		catch (Exception e) {e.printStackTrace();}
 
 		System.out.println ("Adding to out of range index (error):");
 		try {aList.add(4, 4.0);} 
-		catch (Exception e) {System.out.println (e);}
+		catch (Exception e) {e.printStackTrace();}
 
 		System.out.println ("Adding to index 1 (valid)");
 		try {
 			aList.add(1, 4.0);
 			System.out.println ("List ([0]=>5.0; [1]=>4.0; [2]=>6.0; [3]=>7.0;): " + aList);		
 		} 
-		catch (Exception e) {System.out.println (e);}
+		catch (Exception e) {e.printStackTrace();}
 		
 		
 		System.out.println ("Adding to out of bounds index (error)");
 		try {aList.add(99, 4.0);} 
-		catch (Exception e) {System.out.println (e);}
+		catch (Exception e) {e.printStackTrace();}
 
 		System.out.println ("Removing a negative index (error)");
 		try {aList.remove(-1);} 
-		catch (Exception e) {System.out.println (e);}
+		catch (Exception e) {e.printStackTrace();}
 	
 		System.out.println ("Removing an out of bounds index (error)");
 		try {aList.remove(99);} 
-		catch (Exception e) {System.out.println (e);}
+		catch (Exception e) {e.printStackTrace();}
 
 		System.out.println ("Removing item 1 (valid):");
 		try {
 			aList.remove(1);
 			System.out.println ("List ([0]=>5.0; [1]=>6.0; [2]=>7.0;): " + aList);
 		} 
-		catch (Exception e) {System.out.println (e);}
+		catch (Exception e) {e.printStackTrace();}
 
 		System.out.println ("Removing an out of range index (error):");
 		try {aList.remove(4);} 
-		catch (Exception e) {System.out.println (e);}
+		catch (Exception e) {e.printStackTrace();}
 
 		// test clear/isEmpty
 		
@@ -237,7 +237,7 @@ public class MrHRunner {
 			aList.clear();
 			System.out.println ("List (Empty List): " + aList + " isEmpty (true): " + aList.isEmpty());
 		}
-		catch (Exception e) {System.out.println (e);}
+		catch (Exception e) {e.printStackTrace();}
 		
 		// test equals
 		
@@ -264,7 +264,7 @@ public class MrHRunner {
 			System.out.println ("aList equals bList (false): " + aList.equals(bList));
 			System.out.println ("bList equals aList (false): " + bList.equals(aList));
 		}
-		catch (Exception e) {System.out.println (e);}
+		catch (Exception e) {e.printStackTrace();}
 	}
 
 
