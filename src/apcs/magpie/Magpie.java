@@ -8,6 +8,35 @@ package apcs.magpie;
  */
 public class Magpie {
 	/**
+	 * Finds the location of the first isolated keyword given
+	 * @param statement The whole line of words that is being used
+	 * @param keyword The keyword that is being used 
+	 * @return the location of the first isolated keyword 
+	 */
+	public int findKeyword (String statement, String keyword) {
+		statement = statement.toLowerCase();
+		keyword = keyword.toLowerCase();
+		statement = " " + statement + " ";
+		int point = statement.indexOf(keyword, 1);
+		int brak = 0;
+		if(point == -1) {
+			return point;
+		}
+		char first = statement.charAt(point-1);
+		char last = statement.charAt(point + keyword.length());
+		while(brak == 0) {
+		if(Character.isAlphabetic(first) != true && Character.isAlphabetic(last) != true) {
+			return point;
+		}
+		else {
+			point = statement.indexOf(keyword, point + keyword.length());
+			first = statement.charAt(point-1);
+			last = statement.charAt(point + keyword.length());
+		}
+		}
+		return point;
+	}
+	/**
 	 * Get a default greeting
 	 * 
 	 * @return a greeting
@@ -26,16 +55,16 @@ public class Magpie {
 		statement = statement + " ";
 		statement = statement.toLowerCase();
 		String response = "";
-		if(statement.indexOf("no ") != -1) {
+		if(findKeyword (statement,"no ") != -1) {
 			response = "Why not?";
 		}
-		else if(statement.indexOf("yes ") != -1) {
+		else if(findKeyword (statement,"yes ") != -1) {
 			response = "That's good to hear, how's life?";
 		}
-		else if(statement.indexOf("mother ") != -1 || statement.indexOf("brother ") != -1 || statement.indexOf("sister ") != -1 || statement.indexOf("father ") != -1) {
+		else if(findKeyword (statement,"mother ") != -1 || statement.indexOf("brother ") != -1 || statement.indexOf("sister ") != -1 || statement.indexOf("father ") != -1) {
 			response = "Tell me more about your family";
 		}
-		else if(statement.indexOf("? ") != -1) {
+		else if(findKeyword (statement,"? ") != -1) {
 			int i = (int)(Math.random()* 4);
 			if(i == 1) {
 			response = "yep";
@@ -50,7 +79,7 @@ public class Magpie {
 			response = "good";
 			}
 		}
-		else if(statement.indexOf("im ") != -1 || statement.indexOf("i'm ") != -1 || statement.indexOf("i am ") != -1 ) {
+		else if(findKeyword (statement,"im ") != -1 || statement.indexOf("i'm ") != -1 || statement.indexOf("i am ") != -1 ) {
 			response = "Hi " + statement.substring(statement.indexOf("m") + 2) + ", I'm dad.";
 		}
 		
