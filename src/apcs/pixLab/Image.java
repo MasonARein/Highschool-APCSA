@@ -154,5 +154,121 @@ public class Image {
 		
 		return new Image (newImg);
 	}
+	public Image flipHorizontal() {
+
+		Color[][] newImg = new Color[image.length][image[0].length];
+		
+		// loop through all pixels
+		for (int r = 0; r < image.length; r++) {
+			for (int c = 0; c < image[r].length; c++) {
+				
+				// get component parts of pixel's color
+				int red = image[r][c].getRed();
+				int green = image[r][c].getGreen();
+				int blue = image[r][c].getBlue();
+
+				// construct a new pixel with the same red and green but no blue
+				newImg[r][image[r].length-1-c] = new Color(red, green, blue);
+			}
+		}
+		
+		return new Image (newImg);
+	}
+	public Image mirrorVertical() {
+
+		Color[][] newImg = new Color[image.length][image[0].length];
+		
+		// loop through all pixels
+		for (int r = 0; r < image.length; r++) {
+			for (int h = 0; h < image[r].length; h++) {
+				int c = 0;
+				if(h < (image[r].length-1)/2.0) {
+					 c= h;
+				}
+				else {
+					c = image[r].length-1-h;
+				}
+				// get component parts of pixel's color
+				int red = image[r][c].getRed();
+				int green = image[r][c].getGreen();
+				int blue = image[r][c].getBlue();
+				// construct a new pixel with the same red and green but no blue
+				newImg[r][h] = new Color(red, green, blue);
+			}
+		}
+		
+		return new Image (newImg);
+	}
+	public Image mirrorHorizontal() {
+
+		Color[][] newImg = new Color[image.length][image[0].length];
+		
+		// loop through all pixels
+		for (int h = 0; h < image.length; h++) {
+			for (int c = 0; c < image[h].length; c++) {
+				int r = 0;
+				if(h < (image.length-1)/2.0) {
+					 r= h;
+				}
+				else {
+					r = image.length-1-h;
+				}
+				// get component parts of pixel's color
+				int red = image[r][c].getRed();
+				int green = image[r][c].getGreen();
+				int blue = image[r][c].getBlue();
+				// construct a new pixel with the same red and green but no blue
+				newImg[h][c] = new Color(red, green, blue);
+			}
+		}
+		
+		return new Image (newImg);
+	}
+	public Image blurImage() {
+
+		Color[][] newImg = new Color[image.length][image[0].length];
+		
+		// loop through all pixels
+		for (int r = 0; r < image.length; r++) {
+			for (int c = 0; c < image[r].length; c++) {
+				
+				// get component parts of pixel's color
+				int red = image[r][c].getRed();
+				int red1 = image[r-1][c].getRed();
+				int red2 = image[r+1][c].getRed();
+				int red3 = image[r-1][c-1].getRed();
+				int red4 = image[r+1][c-1].getRed();
+				int red5 = image[r][c-1].getRed();
+				int red6 = image[r-1][c+1].getRed();
+				int red7 = image[r+1][c+1].getRed();
+				int red8 = image[r][c+1].getRed();
+				int green = image[r][c].getGreen();
+				int green1 = image[r-1][c].getGreen();
+				int green2 = image[r+1][c].getGreen();
+				int green3 = image[r-1][c-1].getGreen();
+				int green4 = image[r+1][c-1].getGreen();
+				int green5 = image[r][c-1].getGreen();
+				int green6 = image[r-1][c+1].getGreen();
+				int green7 = image[r+1][c+1].getGreen();
+				int green8 = image[r][c+1].getGreen();
+				int red = image[r][c].getRed();
+				int red1 = image[r-1][c].getRed();
+				int red2 = image[r+1][c].getRed();
+				int red3 = image[r-1][c-1].getRed();
+				int red4 = image[r+1][c-1].getRed();
+				int red5 = image[r][c-1].getRed();
+				int red6 = image[r-1][c+1].getRed();
+				int red7 = image[r+1][c+1].getRed();
+				int red8 = image[r][c+1].getRed();
+				int green = image[r][c].getGreen();
+				int blue = image[r][c].getBlue();
+
+				// construct a new pixel with the same red and green but no blue
+				newImg[r][c] = new Color(red , green, 0);
+			}
+		}
+		
+		return new Image (newImg);
+	}
 
 }
