@@ -18,19 +18,18 @@ public class Magpie {
 		keyword = keyword.toLowerCase();
 		statement = " " + statement + " ";
 		int point = statement.indexOf(keyword, 1);
-		int brak = 0;
 		if(point == -1) {
 			return point;
 		}
 		char first = statement.charAt(point-1);
-		char last = statement.charAt(point + keyword.length());
-		while(brak == 0) {
+		char last = statement.charAt(point + keyword.length()-1);
+		for(int i = 0; i < statement.length(); i++) {
 		if(Character.isAlphabetic(first) != true && Character.isAlphabetic(last) != true) {
 			return point;
 		}
 		else {
 			point = statement.indexOf(keyword, point + keyword.length());
-			first = statement.charAt(point-1);
+			first = statement.charAt(point);
 			last = statement.charAt(point + keyword.length());
 		}
 		}
@@ -52,19 +51,17 @@ public class Magpie {
 	 * @return a response based on the rules given
 	 */
 	public String getResponse(String statement) {
-		statement = statement + " ";
-		statement = statement.toLowerCase();
 		String response = "";
-		if(findKeyword (statement,"no ") != -1) {
+		if(findKeyword (statement,"no") != -1) {
 			response = "Why not?";
 		}
-		else if(findKeyword (statement,"yes ") != -1) {
+		else if(findKeyword (statement,"yes") != -1) {
 			response = "That's good to hear, how's life?";
 		}
-		else if(findKeyword (statement,"mother ") != -1 || statement.indexOf("brother ") != -1 || statement.indexOf("sister ") != -1 || statement.indexOf("father ") != -1) {
+		else if(findKeyword (statement,"mother") != -1 || statement.indexOf("brother") != -1 || statement.indexOf("sister") != -1 || statement.indexOf("father") != -1) {
 			response = "Tell me more about your family";
 		}
-		else if(findKeyword (statement,"? ") != -1) {
+		else if(statement.indexOf("?", 0) != -1) {
 			int i = (int)(Math.random()* 4);
 			if(i == 1) {
 			response = "yep";
