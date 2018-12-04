@@ -307,9 +307,9 @@ public class Image {
 			// loop through all pixels
 			for (int r = 0; r < image.length; r++) {
 				for (int c = 0; c < image[r].length; c++) {
-					int green = 0;
-					int blue = 0;
-					int red = 0;
+					int green =0;
+					int blue =0;
+					int red =0;
 					if(c > 0) {
 					if(image[r][c-1].getGreen() > image[r][c].getGreen() + 35 ||image[r][c-1].getGreen()+ 35 < image[r][c].getGreen()) {
 					 green = 0;
