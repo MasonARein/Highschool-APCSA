@@ -231,14 +231,101 @@ public class Image {
 		// loop through all pixels
 		for (int r = 0; r < image.length; r++) {
 			for (int c = 0; c < image[r].length; c++) {
-				
-				// get component parts of pixel's color
+				int totalred = 0;
+				int totalgreen = 0;
+				int totalblue = 0;
+				int amount = 0;
+				for(int a = 0; a < 9; a++) {
+					if(a == 0 && r > 0 && c > 0) {
+						totalred = totalred + image[r-1][c-1].getRed();
+						totalgreen = totalgreen + image[r-1][c-1].getGreen();
+						totalblue = totalblue + image[r-1][c-1].getBlue();
+						amount++;
+					}
+					if(a == 1 && r > 0) {
+						totalred = totalred + image[r-1][c].getRed();
+						totalgreen = totalgreen + image[r-1][c].getGreen();
+						totalblue = totalblue + image[r-1][c].getBlue();
+						amount++;
+					}
+					if(a == 2 && r > 0 && c < image[r].length-1) {
+						totalred = totalred + image[r-1][c+1].getRed();
+						totalgreen = totalgreen + image[r-1][c+1].getGreen();
+						totalblue = totalblue + image[r-1][c+1].getBlue();
+						amount++;
+					}
+					if(a == 3 && c > 0) {
+						totalred = totalred + image[r][c-1].getRed();
+						totalgreen = totalgreen + image[r][c-1].getGreen();
+						totalblue = totalblue + image[r][c-1].getBlue();
+						amount++;
+					}
+					if(a == 4) {
+						totalred = totalred + image[r][c].getRed();
+						totalgreen = totalgreen + image[r][c].getGreen();
+						totalblue = totalblue + image[r][c].getBlue();
+						amount++;
+					}
+					if(a == 5 && c < image[r].length-1 ) {
+						totalred = totalred + image[r][c+1].getRed();
+						totalgreen = totalgreen + image[r][c+1].getGreen();
+						totalblue = totalblue + image[r][c+1].getBlue();
+						amount++;
+					}
+					if(a == 6 && c > 0 && r < image.length-1) {
+						totalred = totalred + image[r+1][c-1].getRed();
+						totalgreen = totalgreen + image[r+1][c-1].getGreen();
+						totalblue = totalblue + image[r+1][c-1].getBlue();
+						amount++;
+					}
+					if(a == 7 && r < image.length-1) {
+						totalred = totalred + image[r+1][c].getRed();
+						totalgreen = totalgreen + image[r+1][c].getGreen();
+						totalblue = totalblue + image[r+1][c].getBlue();
+						amount++;
+					}
+					if(a == 8 && c < image[r].length-1   && r < image.length-1) {
+						totalred = totalred + image[r+1][c+1].getRed();
+						totalgreen = totalgreen + image[r+1][c+1].getGreen();
+						totalblue = totalblue + image[r+1][c+1].getBlue();
+						amount++;
+					}
+					
+				}
 			
 
 				// construct a new pixel with the same red and green but no blue
-				newImg[r][c] = new Color(red , green, 0);
+				newImg[r][c] = new Color(totalred/amount , totalgreen/amount, totalblue/amount);
 			}
 		}
+		return new Image (newImg);
+	}
+		public Image edgeDetection() {
+
+			Color[][] newImg = new Color[image.length][image[0].length];
+			
+			// loop through all pixels
+			for (int r = 0; r < image.length; r++) {
+				for (int c = 0; c < image[r].length; c++) {
+					int green = 0;
+					int blue = 0;
+					int red = 0;
+					if(c > 0) {
+					if(image[r][c-1].getGreen() > image[r][c].getGreen() + 35 ||image[r][c-1].getGreen()+ 35 < image[r][c].getGreen()) {
+					 green = 0;
+					blue = 0;
+					 red = 0;
+					}
+					else {
+						green = 255;
+						blue = 255;
+						red = 255;
+					}
+					}
+					// construct a new pixel with the same red and green but no blue
+					newImg[r][c] = new Color(red , green, blue);
+				}
+			}
 		
 		return new Image (newImg);
 	}

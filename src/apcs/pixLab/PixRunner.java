@@ -8,7 +8,16 @@ public class PixRunner {
 		i.display("Peak to Peak");
 		
 		// or this - it does the same thing
-		i.mirrorHorizontal().display("Inverted");
+		i.blurImage().display("Blurred");
+		i.removeRed().display("Remove Red");
+		i.removeGreen().display("Remove Green");
+		i.invertColor().display("Invert Color");
+		i.blackWhite().display("Black & White");
+		i.flipHorizontal().display("Flip Horizontal");
+		i.mirrorVertical().display("Mirror Vertical");
+		i.mirrorHorizontal().display("Mirror Horizontal");
+		i.edgeDetection().display("Edge Detection");
+
 	}
 
 }
