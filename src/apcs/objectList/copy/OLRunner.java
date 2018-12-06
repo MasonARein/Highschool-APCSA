@@ -12,7 +12,7 @@ ObjectList objs = new ObjectList ();
         objs.add(new Integer(20));
         
         System.out.println ("List is: " + objs);
-        
+         
         Object o = objs.remove();
         
         System.out.println (o + " was removed");

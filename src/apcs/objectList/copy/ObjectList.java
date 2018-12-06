@@ -280,7 +280,7 @@ public class ObjectList {
 			return false;
 		}
 		for (int i = 0; i < this.mySize; i++) {
-			if (this.myList[i] != exe.myList[i]) {
+			if (this.myList[i].equals(exe.myList[i]) == false) {
 				return false;
 			}
 		}

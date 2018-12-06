@@ -85,7 +85,7 @@ public class MrHRunner {
 			}
 			catch (Exception e) {System.out.println ("Error: " + e);}
 		}
-		try{
+		try{ 
 			System.out.println ("Attempt to remove from an empty list:");
 			System.out.println(aList.remove());
 		}
