@@ -6,8 +6,8 @@ package apcs.objectList.copy;
  * @author marein01
  *
  */
-public class ObjectList {
-	private Object[] myList;
+public class ObjectList <E>{
+	private E[] myList;
 	private int mySize;
 
 	/**
@@ -15,7 +15,7 @@ public class ObjectList {
 	 * being used
 	 */
 	public ObjectList() {
-		myList = new Object[20];
+		myList =  (E[]) new Object[20];
 		mySize = 0;
 	}
 
@@ -26,7 +26,7 @@ public class ObjectList {
 	 * @param val is value taken in to set the size of the list
 	 */
 	public ObjectList(int val) {
-		myList = new Object[val];
+		myList = (E[]) new Object[val];
 		mySize = 0;
 	}
 
@@ -54,7 +54,7 @@ public class ObjectList {
 	 * of the new list to the old one
 	 */
 	private void expand() {
-		Object[] newList = new Object[((int) (size() * 1.5))];
+		E[] newList = (E[]) new Object[((int) (size() * 1.5))];
 		for (int i = 0; i < size(); i++) {
 			newList[i] = this.myList[i];
 		}
@@ -69,7 +69,7 @@ public class ObjectList {
 	 * @param newt the value to be added
 	 * @throws RuntimeException if list is full
 	 */
-	public void add(Object newt) {
+	public void add(E newt) {
 		if (size() == maxSize()) {
 			expand();
 		} else {
@@ -83,13 +83,13 @@ public class ObjectList {
 	 * removes the last item added to the list
 	 * @return the removed item
 	 */
-	public Object remove() {
+	public E remove() {
 		if (mySize == 0) {
 			throw new IndexOutOfBoundsException("The ObjectList is empty.");
 		}
 		mySize--;
-		Object removedItem = myList[mySize];
-		myList[mySize] = 0.0;
+		E removedItem = myList[mySize];
+		myList[mySize] = null;
 		return removedItem;
 
 	}
@@ -98,11 +98,11 @@ public class ObjectList {
 	 * Searches through the entire list to find the first position of a specified
 	 * item
 	 * 
-	 * @param search is the Object/value being searched for in the list
+	 * @param search is the E/value being searched for in the list
 	 * @return the place in the list in which the value is, and if not in the list
 	 *         it returns -1
 	 */
-	public int indexOf(Object search) {
+	public int indexOf(E search) {
 		for (int i = 0; i < mySize; i++) {
 			if (myList[i].equals(search)) {
 				return i;
@@ -115,11 +115,11 @@ public class ObjectList {
 	 * Searches through the entire list to find the last position of a specified
 	 * item
 	 * 
-	 * @param search is the Object/value being searched for in the list
+	 * @param search is the E/value being searched for in the list
 	 * @return the place in the list in which the value is, and if not in the list
 	 *         it returns -1
 	 */
-	public int lastIndexOf(Object search) {
+	public int lastIndexOf(E search) {
 		for (int i = mySize - 1; i > 0; i--) {
 			if (myList[i].equals(search)) {
 				return i;
@@ -131,10 +131,10 @@ public class ObjectList {
 	/**
 	 * Searches through the entire list to find if the specified item is in the list
 	 * 
-	 * @param search is the Object/value being searched for in the list
+	 * @param search is the E/value being searched for in the list
 	 * @return true if the item is in the list and false if not
 	 */
-	public boolean contains(Object search) {
+	public boolean contains(E search) {
 		for (int i = 0; i < mySize; i++) {
 			if (myList[i] == search) {
 				return true;
@@ -149,8 +149,8 @@ public class ObjectList {
 	 * 
 	 * @return the maximum value in the list
 	 */
-//	public Object maximum() {
-//		Object max = myList[0];
+//	public E maximum() {
+//		E max = myList[0];
 //		if (size() != 0)
 //			for (int i = 0; i < size(); i++) {
 //				if (myList[i] > max) {
@@ -168,8 +168,8 @@ public class ObjectList {
 //	 * 
 //	 * @return the minimum value in the list
 //	 */
-//	public Object minimum() {
-//		Object min = myList[0];
+//	public E minimum() {
+//		E min = myList[0];
 //		if (size() != 0)
 //			for (int i = 0; i < size(); i++) {
 //				if (myList[i] < min) {
@@ -188,9 +188,9 @@ public class ObjectList {
 	 * @param item the value of the place in the list
 	 * @return the item in the requested place of the list
 	 */
-	public Object get(int item) {
+	public E get(int item) {
 		if (item >= 0 && item < size()) {
-			Object value = myList[item];
+			E value = myList[item];
 			return value;
 		} else {
 			throw new IndexOutOfBoundsException("Place not found in List");
@@ -203,7 +203,7 @@ public class ObjectList {
 	 * @param item  place in the list to be set
 	 * @param value value the place is going to be set to
 	 */
-	public void set(int item, Object value) {
+	public void set(int item, E value) {
 		if (item >= 0 && item < size()) {
 			myList[item] = value;
 		} else {
@@ -219,7 +219,7 @@ public class ObjectList {
 	 * @param index [lace requested to be switched
 	 * @param value value being put into requested position
 	 */
-	public void add(int index, Object value) {
+	public void add(int index, E value) {
 		if (size() == maxSize()) {
 			expand();
 
@@ -264,15 +264,15 @@ public class ObjectList {
 	public void clear() {
 		mySize = 0;
 		for (int i = 0; i < myList.length; i++) {
-			myList[i] = 0.0;
+			myList[i] = null;
 		}
 	}
 
 	/**
-	 * Compares two different Object lists on the different values they have and
+	 * Compares two different E lists on the different values they have and
 	 * returns true if all values are the same
 	 * 
-	 * @param exe The Object list that is being compared to the current Object list
+	 * @param exe The E list that is being compared to the current E list
 	 * @return true if all of the values in the two lists are the same
 	 */
 	public boolean equals(ObjectList exe) {
@@ -306,10 +306,10 @@ public class ObjectList {
 	 * 
 	 * @param val the array that is being taken in to be converted into a list
 	 */
-	public ObjectList(Object[] val) {
+	public ObjectList(E[] val) {
 		mySize = 0;
-		myList = new Object[(int) (val.length * 1.5)];
-		for (Object valval : val) {
+		myList = (E[]) new Object[(int) (val.length * 1.5)];
+		for (E valval : val) {
 			this.add(valval);
 		}
 
@@ -337,8 +337,8 @@ public class ObjectList {
 	 * 
 	 * @return the array that is a copy of the list
 	 */
-	public Object[] toArray() {
-		Object[] mirror = new Object[this.mySize];
+	public E[] toArray() {
+		E[] mirror = (E[]) new Object[this.mySize];
 		for (int i = 0; i < this.mySize; i++) {
 			mirror[i] = this.myList[i];
 		}

@@ -24,6 +24,11 @@ public class Fraction {
 		denominator = d;
 
 	}
+	public Fraction( int n, int d) {
+		numerator = n;
+		denominator = d;
+
+	}
 
 	/**
 	 * gets the value of the whole
