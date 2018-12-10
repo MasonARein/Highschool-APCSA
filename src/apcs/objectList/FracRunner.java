@@ -1,4 +1,4 @@
-package apcs.objectList.copy;
+package apcs.objectList;
 
 import apcs.fraction.Fraction;
 

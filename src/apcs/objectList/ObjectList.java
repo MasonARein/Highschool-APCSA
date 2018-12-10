@@ -1,4 +1,4 @@
-package apcs.objectList.copy;
+package apcs.objectList;
 
 /**
  * Creates a list of Objects that can have the size be changed

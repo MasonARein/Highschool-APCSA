@@ -1,4 +1,4 @@
-package apcs.objectList.copy;
+package apcs.objectList;
 
 public class MrHRunner {
 	public static void main (String args[]) {
