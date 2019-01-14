@@ -24,6 +24,7 @@ public class GW3 {
         System.out.println(g.getOccupiedAdjacentLocations(new Location (2, 2)));
         System.out.println(g.getEmptyAdjacentLocations(new Location (2, 2)));
         System.out.println(g.getNeighbors(new Location (2, 2)));
+        System.out.println(loc.getCol());
 
 
 
