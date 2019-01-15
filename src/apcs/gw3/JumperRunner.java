@@ -15,7 +15,7 @@ public class JumperRunner {
         for(int i = 0; i < grid.getNumRows(); i++){
             for(int j = 0; j < grid.getNumCols(); j++){
                 double m = Math.random();
-                if(m < 0.3){
+                if(m < 0.15){
                     world.add(new Location(i, j), new Rock());
                 }
             }
