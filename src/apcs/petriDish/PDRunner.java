@@ -13,8 +13,8 @@ public class PDRunner {
         Grid<Actor> grid = new BoundedGrid<Actor>(20, 20);
         ActorWorld world = new ActorWorld (grid);
         world.add(new Slime(Color.GREEN, 5));
-        world.add(new Amoeba(Color.GREEN, 0, 0, 10));
-        world.add(new Amoeba(Color.RED, 0, 0, 10));
+        world.add(new Amoeba(Color.GREEN, .1, .3, 10, 500));
+        world.add(new Amoeba(Color.RED, .1, .3, 10, 500));
         world.show();
     }
 }
