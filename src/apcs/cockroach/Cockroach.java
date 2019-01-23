@@ -21,14 +21,12 @@ public class Cockroach extends Actor {
             this.setColor (Color.ORANGE);
             Location loc = getLocation();
             Location goal = new Location (0,0);
-            int direction = loc.getDirectionTowards(goal);
-            Location newl = getAdjacentLocation(direction);
-            Location dire = grid.getEmptyAdjacentLocations(loc);
+
         }
         else {
             this.setColor (Color.RED);
             Location loc = getLocation();
-            Location dire = grid.getEmptyAdjacentLocations(loc)
+
         }
 
     }
