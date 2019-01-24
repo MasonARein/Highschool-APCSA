@@ -11,10 +11,10 @@ public class Runner {
     public static void main(String[] args) {
         Grid<Actor> grid = new BoundedGrid<Actor>(25, 40);
         CockroachWorld world = new CockroachWorld(grid);
-        for(int i = 0; i < 40; i++){
+        for(int i = 0; i < 0; i++){
             world.add(new Rock());
         }
-        for(int i = 0; i < 15; i++){
+        for(int i = 0; i < 500; i++){
             world.add(new Cockroach());
         }
         world.show();
