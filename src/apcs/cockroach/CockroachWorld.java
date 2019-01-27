@@ -12,8 +12,8 @@ public class CockroachWorld extends ActorWorld {
         super (grid);
     }
     public boolean keyPressed(String description, Location loc)	 {
-        Cockroach.changeCorner();
         if (Cockroach.getScatter() == true) {
+            Cockroach.changeCorner();
             Cockroach.setScatter (false);
         }
         else {
