@@ -58,6 +58,7 @@ public class Amoeba extends Actor {
         }
         else if(chance <= probDie+probSplit){
             split();
+            //increases the chances of dying for every action other than dying
             probDie = (probDie)/amoebaLife + probDie;
         }
         else{
