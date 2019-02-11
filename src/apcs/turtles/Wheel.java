@@ -1,0 +1,43 @@
+package apcs.turtles;
+
+import TurtleGraphics.Pen;
+
+public class Wheel extends Circle {
+
+    protected int spokes;
+    public Wheel() {
+        this.xPos = 0;
+        this.yPos = 0;
+        this.radius = 50;
+        this.spokes = 8;
+    }
+    public Wheel(double x, double y, double r, int s) {
+        super(x, y, r);
+        this.spokes = s;
+    }
+    public int getSpokes() {
+        return spokes;
+    }
+
+    public void setSpokes(int spokes) {
+        this.spokes = spokes;
+    }
+    public void draw(Pen p){
+        super.draw(p);
+        p.up();
+        p.move(xPos, yPos);
+        p.setDirection(0);
+        p.down();
+        for(int k = 0; k < spokes; k++){
+            p.move(radius);
+            p.up();
+            p.move(xPos, yPos);
+            p.down();
+            p.turn(360/spokes);
+        }
+    }
+    public String toString (){
+        return super.toString() + " Spokes: "+ spokes;
+    }
+
+}

@@ -5,13 +5,18 @@ import TurtleGraphics.Pen;
 import static java.lang.Math.PI;
 
 public class Circle implements Shape {
-    private double xPos;
-    private double yPos;
-    private double radius;
+    protected double xPos;
+    protected double yPos;
+    protected double radius;
     public Circle (double x, double y, double r) {
         this.xPos = x;
         this.yPos = y;
         this.radius = r;
+    }
+    public Circle () {
+        this.xPos = 0;
+        this.yPos = 0;
+        this.radius = 50;
     }
     @Override
     public double area() {
@@ -30,6 +35,7 @@ public class Circle implements Shape {
             p.move((2*PI*radius)/360);
             p.turn(1);
         }
+        p.up();
     }
 
     @Override
