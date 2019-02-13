@@ -1,8 +1,8 @@
-package apcs.turtles;
+package apcs.turtles3;
 
 import TurtleGraphics.Pen;
 
-public class Rect extends AbstractShape implements Shape {
+public class Rect extends AbstractShape {
     protected double height;
     protected double width;
 

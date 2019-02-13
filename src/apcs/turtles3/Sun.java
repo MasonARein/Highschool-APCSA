@@ -1,4 +1,4 @@
-package apcs.turtles;
+package apcs.turtles3;
 
 import TurtleGraphics.Pen;
 
@@ -41,5 +41,10 @@ public class Sun extends AbstractShape implements Shape {
     @Override
     public void stretchBy(double factor) {
         size = size * factor;
+    }
+    public String toString (){
+        String str;
+        str = "Sun Center=(" + xPos + ", " + yPos + "); Size=" + size + "; Complexity=" + complexity + ";";
+        return str;
     }
 }

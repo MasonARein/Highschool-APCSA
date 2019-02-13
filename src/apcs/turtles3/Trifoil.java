@@ -1,4 +1,4 @@
-package apcs.turtles;
+package apcs.turtles3;
 
 import TurtleGraphics.Pen;
 
@@ -56,7 +56,7 @@ public class Trifoil extends AbstractShape implements Shape {
     }
     public String toString (){
         String str;
-        str = "Rect Center=(" + xPos + ", " + yPos + "); Size=" + size + ";";
+        str = "Trifoil Center=(" + xPos + ", " + yPos + "); Size=" + size + ";";
         return str;
     }
 }

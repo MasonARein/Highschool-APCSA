@@ -1,10 +1,10 @@
-package apcs.turtles;
+package apcs.turtles3;
 
 import TurtleGraphics.Pen;
 
 import static java.lang.Math.PI;
 
-public class Circle extends AbstractShape implements Shape {
+public class Circle extends AbstractShape {
     protected double radius;
     public Circle (double x, double y, double r) {
         this.xPos = x;
