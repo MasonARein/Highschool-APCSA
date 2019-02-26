@@ -20,5 +20,6 @@ public class Runner {
             move (1, from, to, other, stat);
             move (num-1, other, to, from, (char)(stat-1));
         }
+
     }
 }
