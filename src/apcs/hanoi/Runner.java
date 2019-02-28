@@ -8,9 +8,9 @@ public class Runner {
         System.out.println("How many discs are there?");
         int discs = reader.nextInt();
         char item = (char)('A'+(discs-1));
-        move (discs, 1, 3, 2, item);
+    move (discs, 1, 3, 2, item);
 
-    }
+}
     public static void move (int num, int from, int to, int other, char stat){
 
         if(num == 1)
