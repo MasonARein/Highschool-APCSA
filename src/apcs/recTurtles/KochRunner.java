@@ -2,12 +2,12 @@ package apcs.recTurtles;
 
 import TurtleGraphics.*;
 
+import java.awt.*;
 import java.util.Scanner;
 
 public class KochRunner {
     public static void main (String[] argv) {
         Scanner reader = new Scanner(System.in);
-        SketchPadWindow a = new SketchPadWindow(500, 500);
         Pen p1;
         System.out.println("Select type of Pen: Standard-1, Rainbow-2, Wiggle-3");
         int intake = reader.nextInt();
@@ -36,8 +36,28 @@ public class KochRunner {
             drawKochCurve(p1, lena, dega);
             p1.turn(-120);
         }
-        Pen p2 = new StandardPen();
-        drawDragonCurve(p1, 500, 15, 1);
+        Pen p2;
+        System.out.println("Select type of Pen: Standard-1, Rainbow-2, Wiggle-3");
+        int intak = reader.nextInt();
+        if(intak == 2){
+            p2 = new RainbowPen();
+        }
+        else if(intak == 3){
+            p2 = new WigglePen();
+        }
+        else{
+            p2 = new StandardPen();
+        }
+        System.out.println("Input length(0-600):");
+        int lenb = reader.nextInt();
+        System.out.println("Input compexity(0-20):");
+        int degb = reader.nextInt();
+        p2.up();
+        p2.setDirection(180);
+        p2.move(lenb/2);
+        p2.setDirection(-1*(45 * degb) % 360);
+        p2.down();
+        drawDragonCurve(p2, lenb, degb, 1);
     }
     public static void drawKochCurve (Pen p, double  len, int deg){
         if(deg == 0){
@@ -60,8 +80,10 @@ public class KochRunner {
             p.move(len);
         }
         else {
+            p.setColor(Color.YELLOW);
             drawDragonCurve(p, len * 0.70710678118, deg - 1, 1);
             p.turn(90 * v);
+            p.setColor(Color.BLUE);
             drawDragonCurve(p, len * 0.70710678118, deg - 1, -1);
         }
     }
