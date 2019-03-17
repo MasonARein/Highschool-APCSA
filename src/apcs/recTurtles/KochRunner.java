@@ -80,7 +80,7 @@ public class KochRunner {
             p.move(len);
         }
         else {
-            p.setColor(Color.YELLOW);
+            p.setColor(Color.RED);
             drawDragonCurve(p, len * 0.70710678118, deg - 1, 1);
             p.turn(90 * v);
             p.setColor(Color.BLUE);
