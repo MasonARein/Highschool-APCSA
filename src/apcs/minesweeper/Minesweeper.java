@@ -7,12 +7,12 @@ import info.gridworld.grid.Grid;
 
 public class Minesweeper {
     public static void main(String[] args) {
-            Grid<Actor> g = new BoundedGrid(15, 15);
+            Grid<Actor> g = new BoundedGrid(20, 20);
             MineWorld w = new MineWorld(g);
-            for(int a = 0; a < w.getGrid().getNumRows() * w.getGrid().getNumCols() * .2;a++){
+            for(int a = 0; a < w.getGrid().getNumRows() * w.getGrid().getNumCols() * .1;a++){
             w.add(new Mine());
         }
-        for(int b = 0; b < w.getGrid().getNumRows() * w.getGrid().getNumCols() * .8;b++){
+        for(int b = 0; b < w.getGrid().getNumRows() * w.getGrid().getNumCols() * .9;b++){
             w.add(new Cell());
         }
         w.show();

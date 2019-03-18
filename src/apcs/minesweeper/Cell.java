@@ -20,6 +20,9 @@ public class Cell extends Actor {
     public void setCount(int input){
         count = input;
     }
+    public int getCount(){
+        return count;
+    }
 
     public String toString(){
         return "" + count;
