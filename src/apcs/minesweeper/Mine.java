@@ -17,7 +17,7 @@ public class Mine extends Actor {
         show = boom;
     }
     public String toString(){
-        return "";
+        return "-1";
     }
     public String getImageSuffix() {
         if (show == true)

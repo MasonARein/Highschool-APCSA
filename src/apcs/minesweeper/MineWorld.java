@@ -14,22 +14,32 @@ public class MineWorld extends ActorWorld {
     public MineWorld() {
         super();
         game = false;
-        hidden = (int) (getGrid().getNumCols() * getGrid().getNumRows() * .9);
+        hidden = (int) (getGrid().getNumCols() * getGrid().getNumRows() * .95);
 
     }
 
     public MineWorld(Grid<Actor> g) {
         super(g);
         game = false;
-        hidden = (int) (getGrid().getNumCols() * getGrid().getNumRows() * .9);
+        hidden = (int) (getGrid().getNumCols() * getGrid().getNumRows() * .95);
     }
 
     public boolean locationClicked(Location loc) {
+        Actor inst = getGrid().get(loc);
+        if(inst instanceof Cell){
+            if(((Cell) inst).getCount() == -1){
+                hidden--;
+                this.setMessage("Remaining Squares: " + hidden);
+            }
+        }
+        if(hidden == 0){
+            this.setMessage("You Win!");
+            game = true;
+        }
         if (game == true) {
             this.setMessage("GAME OVER!");
             return true;
         }
-        Actor inst = getGrid().get(loc);
         if (inst instanceof Mine) {
             game = true;
             ((Mine) inst).setShow(true);
@@ -37,6 +47,7 @@ public class MineWorld extends ActorWorld {
 
         }
         if (inst instanceof Cell) {
+
             int amoun = 0;
             ArrayList<Actor> all = getGrid().getNeighbors(loc);
             for (int a = 0; a < all.size(); a++) {
@@ -61,9 +72,8 @@ public class MineWorld extends ActorWorld {
                     locationClicked(ava.get(b).getLocation());
                 }
             }
-                this.setMessage("Remaining Squares: " + hidden);
-                hidden--;
             }
+
             return true;
         }
 
