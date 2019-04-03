@@ -34,7 +34,6 @@ public class MineWorld extends ActorWorld {
         }
         if(hidden == 0){
             this.setMessage("You Win!");
-            game = true;
         }
         if (game == true) {
             this.setMessage("GAME OVER!");
