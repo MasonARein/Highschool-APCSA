@@ -20,6 +20,7 @@ import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
 import info.gridworld.grid.Location;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -47,9 +48,16 @@ public class ChameleonCritter extends Critter
     /**
      * Turns towards the new location as it moves.
      */
-    public void makeMove(Location loc)
-    {
+    public void makeMove(Location loc) {
         setDirection(getLocation().getDirectionToward(loc));
         super.makeMove(loc);
+    }
+    public void act(){
+        super.act();
+        Color c = this.getColor();
+        int red = (int)((double)c.getRed() * 0.95D);
+        int green = (int)((double)c.getGreen() * 0.95D);
+        int blue = (int)((double)c.getBlue() * 0.95D);
+        this.setColor(new Color(red, green, blue));
     }
 }

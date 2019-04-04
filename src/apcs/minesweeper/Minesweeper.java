@@ -7,7 +7,7 @@ import info.gridworld.grid.Grid;
 
 public class Minesweeper {
     public static void main(String[] args) {
-            Grid<Actor> g = new BoundedGrid(10, 5);
+            Grid<Actor> g = new BoundedGrid(30, 50);
             MineWorld w = new MineWorld(g);
             for(int a = 0; a < w.getGrid().getNumRows() * w.getGrid().getNumCols() * .05;a++){
             w.add(new Mine());
