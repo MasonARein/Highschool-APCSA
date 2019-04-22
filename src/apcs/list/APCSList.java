@@ -21,8 +21,36 @@ public class APCSList<E extends Comparable<E>> extends ArrayList<E> {
         }
         return -1;
     }
-    public void sort(){
+    public void sort() {
         Collections.sort(this);
+    }
+    public void quickSort(){
+        APCSList<E> done = new APCSList<E>();
+        APCSList<E> more = new APCSList<E>();
+        APCSList<E> less = new APCSList<E>();
+                int pivot = (int)(this.size() * Math.random());
+                if(this.size() <= 1){
+                    return;
+                }
+                else{
+                    for(int a = 0; a < this.size(); a++){
+                        if(this.get(a).compareTo(this.get(pivot)) > 0){
+                            more.add(this.get(a));
+                        }
+                        else if(this.get(a).compareTo(this.get(pivot)) < 0){
+                            less.add(this.get(a));
+                        }
+                        else{
+                            done.add(this.get(a));
+                        }
+                    }
+                    this.clear();
+                    less.quickSort();
+                    more.quickSort();
+
+                    less.addAll(done);
+                    less.addAll(more);
+                }
     }
     public int binarySearch(E value){
         int left = 0;
